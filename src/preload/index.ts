@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { LearningProject } from '@shared/project'
-import type { AppInfo, ProjectOpenResult, ProjectSaveResult } from '@shared/ipc'
-import { IPC_CHANNELS } from '@shared/ipc'
+import type { LearningProject } from '../shared/project'
+import type { AppInfo, ProjectOpenResult, ProjectSaveResult } from '../shared/ipc'
+import { IPC_CHANNELS } from '../shared/ipc'
 
 const api = {
   app: {

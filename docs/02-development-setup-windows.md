@@ -50,4 +50,4 @@ Windows 환경에 `ELECTRON_RUN_AS_NODE=1`이 설정되어 있으면 Electron이
 
 ## 다음 단계
 
-환경 준비가 끝났다면 [08. 빈 폴더에서 직접 만들기](08-build-from-empty-folder.md)로 이동합니다. 그 문서에서 `npm init`, 의존성 설치, 설정 파일 작성, 소스 코드 작성까지 순서대로 진행합니다.
+환경 준비가 끝났다면 [03. 프로젝트 만들기와 최소 설정](03-project-setup.md)으로 이동합니다. 그 문서에서 `npm init`, 의존성 설치, scripts 작성, 설정 파일 작성, 폴더 구조 만들기까지 순서대로 진행합니다.

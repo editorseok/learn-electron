@@ -1,4 +1,4 @@
-# 03. Electron 구조 따라 만들기
+# 04. Electron 구조 따라 만들기
 
 이 단계에서는 Electron 앱의 세 영역을 직접 나눕니다.
 
@@ -64,6 +64,33 @@ npm run typecheck
 src/main/index.ts
 ```
 
+이 파일은 Electron 앱의 시작점입니다. 최소 설정에서는 이 경로를 `electron.vite.config.ts`에 직접 쓰지 않습니다. 대신 `electron-vite`의 기본 폴더 규칙을 따릅니다.
+
+```txt
+main      src/main/index.ts
+preload   src/preload/index.ts
+renderer  src/renderer/index.html
+```
+
+처음에는 이 약속된 위치에 파일을 두는 것이 설정을 가장 적게 쓰는 방법입니다.
+
+빌드 후에는 아래 파일로 변환됩니다.
+
+```txt
+src/main/index.ts
+  -> out/main/index.js
+```
+
+그리고 `package.json`의 `main` 값이 빌드 결과를 가리킵니다.
+
+```json
+{
+  "main": "./out/main/index.js"
+}
+```
+
+즉, 사람이 작성하는 파일은 `src/main/index.ts`이고, Electron이 실제 실행하는 파일은 `out/main/index.js`입니다.
+
 처음에는 창 하나를 만드는 코드만 작성합니다.
 
 ```ts
@@ -111,7 +138,7 @@ src/preload/index.ts
 
 ```ts
 import { contextBridge, ipcRenderer } from 'electron'
-import { IPC_CHANNELS } from '@shared/ipc'
+import { IPC_CHANNELS } from '../shared/ipc'
 
 contextBridge.exposeInMainWorld('learnApp', {
   app: {

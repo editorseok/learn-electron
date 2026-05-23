@@ -12,7 +12,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "ignoreDeprecations": "6.0",
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -23,24 +22,14 @@
     "types": [
       "node",
       "vite/client",
-      "vitest/globals",
       "electron-vite/node"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@renderer/*": [
-        "src/renderer/src/*"
-      ]
-    }
+    ]
   },
   "include": [
-    "src",
-    "tests",
-    "electron.vite.config.ts",
-    "vitest.config.ts",
-    "eslint.config.mjs"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "*.config.*"
   ]
 }

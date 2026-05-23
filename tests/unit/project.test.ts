@@ -7,7 +7,7 @@ import {
   removeNote,
   serializeProject,
   updateNote
-} from '@shared/project'
+} from '../../src/shared/project'
 
 describe('project model', () => {
   it('serializes and parses a project without losing notes', () => {

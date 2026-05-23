@@ -1,7 +1,7 @@
 import { app, ipcMain } from 'electron'
 import type { BrowserWindow, IpcMainInvokeEvent } from 'electron'
-import type { LearningProject } from '@shared/project'
-import { IPC_CHANNELS } from '@shared/ipc'
+import type { LearningProject } from '../../shared/project'
+import { IPC_CHANNELS } from '../../shared/ipc'
 import {
   clearCurrentProjectPath,
   openProjectFile,

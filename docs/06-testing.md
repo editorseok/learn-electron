@@ -1,4 +1,4 @@
-# 05. 테스트 따라 만들기
+# 06. 테스트 따라 만들기
 
 테스트는 앱이 커져도 기존 기능이 깨지지 않도록 도와줍니다. 처음부터 모든 것을 테스트하지 말고, 데이터가 망가지면 치명적인 부분부터 테스트합니다.
 
@@ -17,7 +17,6 @@ src/renderer/src/test/setup.ts
 export default defineConfig({
   test: {
     environment: 'jsdom',
-    globals: true,
     setupFiles: ['src/renderer/src/test/setup.ts']
   }
 })
@@ -26,6 +25,14 @@ export default defineConfig({
 `setup.ts`에서는 preload API를 mock으로 만듭니다.
 
 ```ts
+import '@testing-library/jest-dom/vitest'
+import { cleanup } from '@testing-library/react'
+import { afterEach, vi } from 'vitest'
+
+afterEach(() => {
+  cleanup()
+})
+
 Object.defineProperty(window, 'learnApp', {
   configurable: true,
   value: {
@@ -53,6 +60,7 @@ Object.defineProperty(window, 'learnApp', {
 
 - 테스트 환경에는 실제 Electron preload가 없습니다.
 - React 컴포넌트가 `window.learnApp`을 사용할 수 있도록 가짜 객체를 넣어 줍니다.
+- `cleanup()`은 테스트가 끝날 때마다 이전 화면을 정리해서 다음 테스트와 섞이지 않게 합니다.
 
 ## 2단계: 도메인 로직 테스트 만들기
 

@@ -13,8 +13,8 @@ import {
   Search,
   Trash2
 } from 'lucide-react'
-import type { AppInfo } from '@shared/ipc'
-import type { LearningNote, LearningProject, NoteUpdate } from '@shared/project'
+import type { AppInfo } from '../../shared/ipc'
+import type { LearningNote, LearningProject, NoteUpdate } from '../../shared/project'
 import {
   calculateProgress,
   createEmptyProject,
@@ -23,7 +23,7 @@ import {
   getAllTags,
   removeNote,
   updateNote
-} from '@shared/project'
+} from '../../shared/project'
 
 const formatDateTime = (value: string): string => {
   return new Intl.DateTimeFormat('ko-KR', {

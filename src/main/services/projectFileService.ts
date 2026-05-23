@@ -1,9 +1,9 @@
 import { dialog } from 'electron'
 import type { BrowserWindow } from 'electron'
 import { readFile, writeFile } from 'node:fs/promises'
-import type { LearningProject } from '@shared/project'
-import { normalizeProject, parseProjectJson, serializeProject } from '@shared/project'
-import type { ProjectOpenResult, ProjectSaveResult } from '@shared/ipc'
+import type { LearningProject } from '../../shared/project'
+import { normalizeProject, parseProjectJson, serializeProject } from '../../shared/project'
+import type { ProjectOpenResult, ProjectSaveResult } from '../../shared/ipc'
 
 let currentProjectPath: string | null = null
 
