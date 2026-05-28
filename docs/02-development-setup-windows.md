@@ -72,7 +72,7 @@ node-options=--use-system-ca
 
 ```bash
 npm install react react-dom lucide-react
-npm install -D electron electron-builder electron-vite typescript vite vitest @vitejs/plugin-react @types/node @types/react @types/react-dom
+npm install -D electron electron-builder electron-vite@5 typescript vite@7 vitest@4 @vitejs/plugin-react@5 @types/node @types/react @types/react-dom
 ```
 
 ## package.json 설정
