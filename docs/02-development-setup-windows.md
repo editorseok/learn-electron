@@ -496,8 +496,12 @@ if (!app.isPackaged) {
 		"timeout": 3000
 	}
 	],
-
-			
+	"compounds": [
+	{
+		"name": "Debug All (Main + Renderer)",
+		"configurations": ["Launch Electron Main", "Attach to Renderer"]
+	}
+	]			
 }
 ```
 
