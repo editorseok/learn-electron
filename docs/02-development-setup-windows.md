@@ -1,4 +1,4 @@
-# 02. Windows 개발 환경 준비
+56# 02. Windows 개발 환경 준비
 
 이 단계에서는 빈 폴더에서 프로젝트를 만들 준비를 합니다. 아직 앱 코드를 작성하지 않습니다.
 
@@ -445,6 +445,60 @@ declare global {
 		myApp: MyApp;
 	}
 } 
+```
+
+## VS Code 통합 디버깅
+
+### 1단계: Main 프로세스에서 디버깅 포트 열기
+
+VS Code가 앱의 화면(Renderer) 쪽에 접근하려면 Electron이 디버깅 포트를 열어주어야 한다.
+
+`src/main/index.ts` (또는 Main 프로세스 진입점 파일)를 열고, `app.whenReady()`가 호출되기 전 (파일 최상단 근처)에 아래 코드를 추가한다.
+
+```typescript
+import { app } from 'electron'
+
+if (!app.isPackaged) { 
+	app.commandLine.appendSwitch('remote-debugging-port', '9222')
+}
+```
+
+### 2단계: `launch.json`에 통합 세팅 추가
+
+`.vscode/launch.json` 파일에 아래 코드를 추가한다.
+(Main, Renderer 연결 설정과 두 개를 동시에 묶는 compounds 설정을 추가한다.)
+
+```json
+{
+	"version": "0.2.0",
+	"configurations": [
+	{
+		"name": "Launch Electron Main",
+		"type": "node",
+		"request": "launch",
+		"cwd": "${workspaceFolder}",
+		"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-vite",
+		"windows": {
+			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-vite.cmd"
+		},
+		"runtimeArgs": ["--sourcemap"],
+		"env": {
+			"ELECTRON_RUN_AS_NODE": ""
+		},
+		"console": "integratedTerminal"
+	},
+	{
+		"name": "Attach to Renderer",
+		"type": "chrome",
+		"request": "attach",
+		"port": 9222,
+		"webRoot": "${workspaceFolder}/src/renderer",
+		"timeout": 3000
+	}
+	],
+
+			
+}
 ```
 
 ## 다음 단계
